@@ -1,0 +1,38 @@
+.layout {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 220px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 200px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: 0;
+    height: auto;
+    min-height: 100vh;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 12px;
+  }
+}
