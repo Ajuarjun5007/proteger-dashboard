@@ -87,8 +87,8 @@ export default function Reports() {
         {/* institution container */}
         <div className="institution-container" style={{display:'flex', justifyContent:'space-between', alignItems:'center', padding:'12px 20px', }}>
           {/* institution details */}
-          <div style={{backgroundColor:'#022A66',display:'flex', width:'25%',
-            flexDirection:'column', justifyContent:'center', alignItems:'flex-start',  padding:'8px 18px',  borderRadius:'8px', color:'white', fontWeight:'600', fontSize:'18px'}}>
+          <div style={{backgroundColor:'#022A66',display:'flex', width:'30%',
+            flexDirection:'column', justifyContent:'center', alignItems:'flex-start',  padding:'8px 18px', height:'220px', borderRadius:'8px', color:'white', fontWeight:'600', fontSize:'18px'}}>
             <span style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'20px'}}>
               <img src={logo_icon} alt="Logo" style={{ height: "55px", cursor: "pointer"}}/>
               <p style={{color:'white',fontSize:'20px'}}>sri siddhartha institute of medical science</p>
@@ -99,15 +99,15 @@ export default function Reports() {
             </span>
           </div>
           {/* pie chart container */}
-          <div style={{ width: '30%', backgroundColor: 'white', borderRadius: '8px', padding: '20px' }}>
-            <ResponsiveContainer width="100%" height={250}>
+          <div style={{ width: '33%', backgroundColor: 'white', borderRadius: '8px', padding: '20px' }}>
+            <ResponsiveContainer  width="100%" height={180}>
               <PieChart>
                 <Pie
                   data={assetsData}
                   cx="50%"
                   cy="50%"
-                  innerRadius={60}
-                  outerRadius={90}
+                  innerRadius={30}
+                  outerRadius={60}
                   paddingAngle={2}
                   dataKey="value"
                 >
@@ -115,22 +115,38 @@ export default function Reports() {
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
                 </Pie>
-                <Tooltip />
-                <Legend />
+             <Tooltip 
+  contentStyle={{ 
+    backgroundColor: '#a5badcff', 
+    fontColor:'white',
+    border: 'none',
+    borderRadius: '6px',
+    padding: '8px 12px'
+  }}
+/>
+                <Legend align="right" verticalAlign="middle" layout="vertical" />
               </PieChart>
             </ResponsiveContainer>
           </div>
           {/* bar chart container */}
-          <div style={{ width: '40%', backgroundColor: 'white', borderRadius: '8px', padding: '20px' }}>
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={chartsData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+          <div style={{ width: '34%', backgroundColor: 'white', borderRadius: '8px'}}>
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart data={chartsData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }} barCategoryGap="30%">
                 <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
                 <XAxis dataKey="name" />
                 <YAxis />
-                <Tooltip />
+               <Tooltip 
+  contentStyle={{ 
+    backgroundColor: '#1B2535', 
+    color: 'white', 
+    border: 'none',
+    borderRadius: '6px',
+    padding: '8px 12px'
+  }}
+/>
                 <Legend />
-                <Bar dataKey="open" fill="#1E40AF" name="Open" stackId="stack" />
-                <Bar dataKey="closed" fill="#60A5FA" name="Closed" stackId="stack" />
+                <Bar dataKey="open" fill="#1E40AF" name="Open" stackId="stack" maxBarSize={20} />
+                <Bar dataKey="closed" fill="#60A5FA" name="Closed" stackId="stack" maxBarSize={20} />
               </BarChart>
             </ResponsiveContainer>
           </div>
