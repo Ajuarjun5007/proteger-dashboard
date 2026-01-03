@@ -103,9 +103,7 @@
     font-size: 16px;
   }
 
-  .recharts-wrapper {
-    margin-left: -50px !important;
-  }
+  
 
   .recharts-cartesian-axis-tick {
     font-size: 11px !important;
@@ -289,3 +287,4 @@
     font-size: 9px !important;
   }
 }
+

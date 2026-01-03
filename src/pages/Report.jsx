@@ -172,7 +172,7 @@ const assetList = [
           </div>
           {/* pie chart container */}
           <div className='institution-details' style={{ width: '33%', backgroundColor: 'white', borderRadius: '8px', padding: '10px' }}>
-            <ResponsiveContainer width="100%" height={200}>
+            <ResponsiveContainer width="100%" height={220}>
               <PieChart>
                 <Pie
                   data={assetsData}
@@ -326,7 +326,10 @@ const assetList = [
         </div>
 
         {/* Incident Data Section */}
-        <div className="incident-data-section" style={{ padding: '20px', margin: '8px 10px' }}>
+        <div className="incident-data-section" style={{ padding: '12px', margin: '8px 10px' }}>
+          <div style={{backgroundColor:'white', padding:'15px', border:'1px solid #ccc', borderRadius:'20px'}}>
+            
+        
           {/* Incident Reported per department */}
           <div className="department-card" style={{ backgroundColor: '#56ABF8', borderRadius: '8px', marginBottom: '15px', overflow: 'hidden' }}>
             <div style={{ padding: '15px 10px', color: 'white', fontWeight: '600', fontSize: '14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -353,7 +356,7 @@ const assetList = [
   ))}
             </div>
           </div>
-
+{/* <div style={{backgroundColor:'white', padding:'15px', border:'1px solid #ccc', borderRadius:'20px'}}></div> */}
           {/* Incidents Reported */}
           <div className="department-card" style={{ backgroundColor: '#56ABF8', borderRadius: '8px', marginBottom: '15px', overflow: 'hidden' }}>
             <div style={{ padding: '15px', color: 'white', fontWeight: '600', fontSize: '14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -369,7 +372,9 @@ const assetList = [
   ))}
             </div>
           </div>
+  </div>
   {/* Incident Reported per department */}
+  <div style={{backgroundColor:'white', padding:'15px', border:'1px solid #ccc',marginTop:'20px', borderRadius:'20px'}}>
           <div className="department-card" style={{ backgroundColor: '#1E3A8A', borderRadius: '8px', marginBottom: '15px', overflow: 'hidden' }}>
             <div style={{ padding: '15px 10px', color: 'white', fontWeight: '600', fontSize: '14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
@@ -410,6 +415,7 @@ const assetList = [
   ))}
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
