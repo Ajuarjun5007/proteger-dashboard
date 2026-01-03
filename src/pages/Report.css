@@ -39,4 +39,34 @@
   .report-content-header > span.report-content-title {
     display: none;
   }
+  .institution-container{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+  .institution-details{
+    width: 100% !important;
+  }
+
+  /* Mobile legend - no padding */
+  .pie-legend {
+    padding-left: 50px !important;
+  }
+  .image-container{
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .image-1, .image-2,.image-3{
+    width: 100% !important;
+    height:70px !important;
+    object-fit:contain !important;
+  }
+}
+
+/* Desktop - add padding to legend for > 768px */
+@media (min-width: 769px) {
+  .pie-legend {
+    padding-left: 120px !important;
+  }
 }

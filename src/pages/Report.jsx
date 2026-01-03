@@ -10,8 +10,22 @@ import clndr from "../assets/header_asset/clndr_icon.png";
 import dwnld from "../assets/header_asset/download_icon.png";
 import logo_icon from "../assets/header_asset/logo_icon.png";
 import location_icon from "../assets/header_asset/location_icon.png";
+import img1 from "../assets/dashboard_asset/image_1.png";
+import img2 from "../assets/dashboard_asset/image_2.png";
+import img3 from "../assets/dashboard_asset/image_3.png";
+import { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Legend, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 export default function Reports() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const assetsData = [
     { name: "Working Assets", value: 150, fill: "#1E3A8A" },
     { name: "Not working Assets", value: 30, fill: "#C26785" },
@@ -23,6 +37,11 @@ export default function Reports() {
     { name: "Work Order", open: 10, closed: 5 },
     { name: "Check outs", open: 22, closed: 12 },
   ];
+
+  // Pie chart dimensions
+  const pieConfig = isMobile 
+    ? { cx: "50%", cy: "35%", innerRadius: 30, outerRadius: 55 }
+    : { cx: "50%", cy: "50%", innerRadius: 45, outerRadius: 75 };
 
   return (
     <div className="report-container">
@@ -87,7 +106,7 @@ export default function Reports() {
         {/* institution container */}
         <div className="institution-container" style={{display:'flex', justifyContent:'space-between', alignItems:'center', padding:'12px 20px', }}>
           {/* institution details */}
-          <div style={{backgroundColor:'#022A66',display:'flex', width:'30%',
+          <div className='institution-details' style={{backgroundColor:'#022A66',display:'flex', width:'30%',
             flexDirection:'column', justifyContent:'center', alignItems:'flex-start',  padding:'8px 18px', height:'220px', borderRadius:'8px', color:'white', fontWeight:'600', fontSize:'18px'}}>
             <span style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'20px'}}>
               <img src={logo_icon} alt="Logo" style={{ height: "55px", cursor: "pointer"}}/>
@@ -99,15 +118,15 @@ export default function Reports() {
             </span>
           </div>
           {/* pie chart container */}
-          <div style={{ width: '33%', backgroundColor: 'white', borderRadius: '8px', padding: '20px' }}>
-            <ResponsiveContainer  width="100%" height={180}>
+          <div className='institution-details' style={{ width: '33%', backgroundColor: 'white', borderRadius: '8px', padding: '10px' }}>
+            <ResponsiveContainer  width="100%" height={200}>
               <PieChart>
                 <Pie
                   data={assetsData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={30}
-                  outerRadius={60}
+                  cx={pieConfig.cx}
+                  cy={pieConfig.cy}
+                  innerRadius={pieConfig.innerRadius}
+                  outerRadius={pieConfig.outerRadius}
                   paddingAngle={2}
                   dataKey="value"
                 >
@@ -124,15 +143,15 @@ export default function Reports() {
     padding: '8px 12px'
   }}
 />
-                <Legend align="right" verticalAlign="middle" layout="vertical" />
+                <Legend align="right" verticalAlign="middle" layout="vertical" className="pie-legend"/>
               </PieChart>
             </ResponsiveContainer>
           </div>
           {/* bar chart container */}
-          <div style={{ width: '34%', backgroundColor: 'white', borderRadius: '8px'}}>
+          <div className='institution-details' style={{ width: '34%', backgroundColor: 'white', borderRadius: '8px'}}>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={chartsData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }} barCategoryGap="30%">
-                {/* <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" /> */}
+
                 <XAxis dataKey="name" />
                 <YAxis />
                <Tooltip 
@@ -152,6 +171,83 @@ export default function Reports() {
             </ResponsiveContainer>
           </div>
         </div>
+        {/* image container */}
+        <div className="image-container" style={{display:'flex', justifyContent:'space-between', alignItems:'center', padding:'12px 20px', }}>
+        <div className="image-1" style={{backgroundColor:'#FAA5B9',width:'30%',height:'100px' , borderRadius:'20px'}}>
+          <img src={img1} alt="Report Visual 1" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius:'8px' }} />
+        </div>
+        <div className="image-2" style={{backgroundColor:'#FFDFC1',width:'34%',height:'100px' , borderRadius:'20px'}}>
+          <img src={img2} alt="Report Visual 1" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius:'8px' }} />
+        </div>
+          <div className="image-2" style={{backgroundColor:'#BEB5FF',width:'34%',height:'100px' , borderRadius:'20px'}}>
+          <img src={img3} alt="Report Visual 1" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius:'8px' }} />
+        </div>
+      </div>
+      {/* data container-1 */}
+      <div className="data-container-1" style={{display:'flex', justifyContent:'space-between', alignItems:'stretch', padding:'12px 20px', gap:'15px'}}>
+        {/* data-1 Check outs */}
+        <div style={{backgroundColor:'white', borderRadius:'8px',  width:'32%', minHeight:'200px', boxShadow:'0 1px 3px rgba(0,0,0,0.1)'}}>
+          <div style={{backgroundColor:'#D4EBFF',width:'100%',padding:'7px',borderRadius:'8px 8px 0 0'}}>
+          <h3 style={{margin:'0 0 15px 0', color:'#1B2535', fontWeight:'600', fontSize:'16px'}}>Check outs</h3>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', marginBottom:'10px', padding:'0px 10px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Checked in</span>
+            <span style={{color:'#1B2535', fontWeight:'600', fontSize:'14px'}}>0</span>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between',padding:'0px 10px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Checked Out</span>
+            <span style={{color:'#1B2535', fontWeight:'600', fontSize:'14px'}}>25</span>
+          </div>
+        </div>
+          {/* data-2 Incidents */}
+        <div style={{backgroundColor:'white', borderRadius:'8px', padding:'10px', width:'32%', minHeight:'200px', boxShadow:'0 1px 3px rgba(0,0,0,0.1)'}}>
+           <div style={{backgroundColor:'#D4EBFF',width:'100%',padding:'7px',borderRadius:'8px 8px 0 0'}}>
+          <h3 style={{margin:'0 0 15px 0', color:'#1B2535', fontWeight:'600', fontSize:'16px'}}>Incidents</h3>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', marginBottom:'10px', padding:'0px 10px' }}>
+            <span style={{color:'#666', fontSize:'14px'}}>Incidents</span>
+            <span style={{color:'#1B2535', fontWeight:'600', fontSize:'14px'}}>22 Reported</span>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', marginBottom:'10px', padding:'0px 10px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Total Downtime</span>
+            <span style={{color:'#1B2535', fontWeight:'600', fontSize:'14px'}}>12 mins 10 sec</span>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', marginBottom:'10px', padding:'0px 10px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Closed</span>
+            <span style={{color:'#1B2535', fontWeight:'600', fontSize:'14px'}}>19</span>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', marginBottom:'10px', padding:'0px 10px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Open</span>
+            <span style={{color:'#1B2535', fontWeight:'600', fontSize:'14px'}}>3</span>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', padding:'0px 10px', paddingBottom:'8px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Budget spent</span>
+            <span style={{color:'#4CAF50', fontWeight:'600', fontSize:'14px'}}>₹ 3,00,000</span>
+          </div>
+        </div>
+          {/* data-3 Work Order */}
+        <div style={{backgroundColor:'white', borderRadius:'8px', width:'32%', minHeight:'200px', boxShadow:'0 1px 3px rgba(0,0,0,0.1)'}}>
+          <div style={{backgroundColor:'#D4EBFF',width:'100%',padding:'7px',borderRadius:'8px 8px 0 0'}}>
+          <h3 style={{margin:'0 0 15px 0', color:'#1B2535', fontWeight:'600', fontSize:'16px'}}>Work Order</h3>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', marginBottom:'10px', padding:'0px 10px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Work order</span>
+            <span style={{color:'#1B2535', fontWeight:'600', fontSize:'14px'}}>17 requested</span>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', marginBottom:'10px', padding:'0px 10px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Closed</span>
+            <span style={{color:'#1B2535', fontWeight:'600', fontSize:'14px'}}>14</span>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', marginBottom:'10px', padding:'0px 10px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Open</span>
+            <span style={{color:'#1B2535', fontWeight:'600', fontSize:'14px'}}>3</span>
+          </div>
+          <div style={{display:'flex', justifyContent:'space-between', padding:'0px 10px', paddingBottom:'8px'}}>
+            <span style={{color:'#666', fontSize:'14px'}}>Budget spent</span>
+            <span style={{color:'#4CAF50', fontWeight:'600', fontSize:'14px'}}>₹ 3,00,000</span>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   );
