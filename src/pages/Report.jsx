@@ -13,15 +13,15 @@ import location_icon from "../assets/header_asset/location_icon.png";
 import { PieChart, Pie, Cell, Legend, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 export default function Reports() {
   const assetsData = [
-    { name: "Working Assets", value: 150, fill: "#3B82F6" },
-    { name: "Not working Assets", value: 30, fill: "#EC4899" },
-    { name: "Discarded", value: 20, fill: "#94A3B8" },
+    { name: "Working Assets", value: 150, fill: "#1E3A8A" },
+    { name: "Not working Assets", value: 30, fill: "#C26785" },
+    { name: "Discarded", value: 20, fill: "#56ABF8" },
   ];
 
   const chartsData = [
-    { name: "Incidents", open: 22, closed: 19 },
-    { name: "Work Order", open: 17, closed: 14 },
-    { name: "Check outs", open: 0, closed: 25 },
+    { name: "Incidents", open: 35, closed: 20 },
+    { name: "Work Order", open: 10, closed: 5 },
+    { name: "Check outs", open: 22, closed: 12 },
   ];
 
   return (
@@ -132,7 +132,7 @@ export default function Reports() {
           <div style={{ width: '34%', backgroundColor: 'white', borderRadius: '8px'}}>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={chartsData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }} barCategoryGap="30%">
-                <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+                {/* <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" /> */}
                 <XAxis dataKey="name" />
                 <YAxis />
                <Tooltip 
@@ -145,8 +145,9 @@ export default function Reports() {
   }}
 />
                 <Legend />
-                <Bar dataKey="open" fill="#1E40AF" name="Open" stackId="stack" maxBarSize={20} />
-                <Bar dataKey="closed" fill="#60A5FA" name="Closed" stackId="stack" maxBarSize={20} />
+                
+                <Bar dataKey="open" fill="#1E3A8A" name="Open" stackId="stack" maxBarSize={20} />
+                <Bar dataKey="closed" fill="#56ABF8" name="Closed" stackId="stack" maxBarSize={20} />
               </BarChart>
             </ResponsiveContainer>
           </div>

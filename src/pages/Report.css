@@ -21,7 +21,7 @@
   color: #000000;
   margin: 0;
 }
-.report-content-header {
+.report-content-header, .report-title-section {
     height: 60px;
     padding: 10px 18px;
     display: flex;
@@ -29,4 +29,14 @@
     align-items: center;
     margin-bottom: 20px;
     background-color: white;
+}
+
+@media (max-width: 768px) {
+  .report-header {
+    display: none;
+  }
+  .report-content-header > img,
+  .report-content-header > span.report-content-title {
+    display: none;
+  }
 }
