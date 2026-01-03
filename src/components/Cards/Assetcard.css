@@ -1,0 +1,36 @@
+.asset-card {
+  position: relative;
+}
+
+.arrow-btn {
+  position: absolute;
+  top: 10px;
+  right: 9px;
+  background:rgba(138, 136, 136, 0.36);
+  border: none;
+  border-radius: 0px 4px 0px 0px;
+  padding: 4px 11px;
+  cursor: pointer;
+}
+
+
+
+.row {
+  display: flex;
+  justify-content:flex-start;
+  gap: 4px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.label {
+  color: #1B2535;
+  font-weight: 600;
+  
+  font-size: 16px;
+}
+
+.value {
+    color: #666;
+  font-size: 16px;
+}

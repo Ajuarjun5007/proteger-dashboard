@@ -62,11 +62,230 @@
     height:70px !important;
     object-fit:contain !important;
   }
+
+  /* Data container responsive */
+  .data-container-1 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    padding: 12px 10px !important;
+  }
+
+  .data-item {
+    width: 100% !important;
+    min-height: 150px !important;
+  }
+}
+
+/* Chart section styling */
+.chart-section {
+  background-color: white;
+  border-radius: 8px;
+  /* margin: 15px 20px;
+  padding: 20px; */
+}
+
+.chart-section h2 {
+  margin: 0 0 20px 0;
+  color: #1B2535;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Responsive chart styling */
+@media (max-width: 768px) {
+  .chart-section {
+    margin: 10px 5px;
+    padding: 15px;
+  }
+
+  .chart-section h2 {
+    font-size: 16px;
+  }
+
+  .recharts-wrapper {
+    margin-left: -50px !important;
+  }
+
+  .recharts-cartesian-axis-tick {
+    font-size: 11px !important;
+  }
 }
 
 /* Desktop - add padding to legend for > 768px */
 @media (min-width: 769px) {
   .pie-legend {
     padding-left: 120px !important;
+  }
+}
+
+/* Incident Data Section Styling */
+.incident-data-section {
+  background-color: #EBEEF2;
+  border-radius: 8px;
+}
+
+.department-card {
+  background-color: #56ABF8;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 15px;
+  background-color: white;
+  min-height: 120px;
+}
+
+.card-item {
+  background-color: #F0F0F0;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #E0E0E0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-item p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-item p:first-child {
+  margin-bottom: 8px;
+  font-size: 11px;
+  color: #666;
+}
+
+.card-item p:nth-child(2) {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1B2535;
+}
+
+.card-item p:last-child {
+  font-size: 10px;
+  color: #999;
+}
+
+/* Responsive - Tablet (768px and below) */
+@media (max-width: 768px) {
+  .incident-data-section {
+    padding: 15px 10px !important;
+    margin: 10px 5px !important;
+  }
+
+  .department-card {
+    margin-bottom: 15px !important;
+  }
+
+  .department-card > div:first-child {
+    padding: 12px 10px !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .department-card > div:first-child span:first-child {
+    font-size: 13px !important;
+  }
+
+  .department-card > div:first-child span:last-child {
+    font-size: 11px !important;
+    margin-top: 8px !important;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    padding: 12px !important;
+  }
+
+  .card-item {
+    padding: 10px !important;
+  }
+
+  .card-item p:first-child {
+    font-size: 10px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .card-item p:nth-child(2) {
+    font-size: 11px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .card-item p:last-child {
+    font-size: 9px !important;
+  }
+}
+
+/* Responsive - Mobile (480px and below) */
+@media (max-width: 480px) {
+  .incident-data-section {
+    padding: 10px 8px !important;
+    margin: 8px 3px !important;
+  }
+
+  .department-card {
+    margin-bottom: 12px !important;
+    border-radius: 6px !important;
+  }
+
+  .department-card > div:first-child {
+    padding: 10px 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+
+  .department-card > div:first-child span {
+    width: 100% !important;
+  }
+
+  .department-card > div:first-child span:first-child {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+  }
+
+  .department-card > div:first-child span:last-child {
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    margin-top: 0 !important;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 8px !important;
+    padding: 10px !important;
+    min-height: 100px !important;
+  }
+
+  .card-item {
+    padding: 10px !important;
+    border: 1px solid #E0E0E0 !important;
+  }
+
+  .card-item p:first-child {
+    font-size: 10px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .card-item p:nth-child(2) {
+    font-size: 11px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .card-item p:last-child {
+    font-size: 9px !important;
   }
 }
